@@ -23,5 +23,9 @@ module.exports = {
             { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/},
             { test: /\.(eot|ttf|woff|woff2|svg)$/, use: 'url-loader'}
         ]
+    },
+    devServer: {
+        host: '0.0.0.0',
+        useLocalIp: true
     }
 }

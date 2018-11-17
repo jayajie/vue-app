@@ -2,7 +2,10 @@
     <div class="app-container">
         <mt-header fixed title="吟游"></mt-header>
         
-        <router-view></router-view>
+        <transition>
+            <router-view></router-view>
+        </transition>
+        
 
         <nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item" to="/home">
@@ -36,9 +39,10 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .app-container {
-        padding-top: 40px;
+        padding: 40px 0 50px;
+        overflow-x: hidden;
 
         .mint-header {
             background-color: #E5007F;
@@ -49,7 +53,22 @@ export default {
                 color: #e5007f;
             }
         }
+       
     }
+
+     .v-enter {
+            opacity: 0;
+            transform: translateX(100%)
+        }
+        .v-leave-to {
+            opacity: 0;
+            transform: translateX(-100%);
+            position: absolute;
+        }
+        .v-enter-active,
+        .v-leave-active {
+            transition: all 0.5s ease;
+        }
         
     
 </style>

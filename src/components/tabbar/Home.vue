@@ -4,7 +4,7 @@
             <mt-swipe-item v-for="item in bannerPics" :key="item.id"><img :src="item.img"></mt-swipe-item>
         </mt-swipe>
         <ul class="menu">
-            <li><a href=""><img src="images/menu1.png" alt=""><p>新闻资讯</p></a></li>
+            <li><router-link to="/newsList"><img src="images/menu1.png" alt=""><p>新闻资讯</p></router-link></li>
             <li><a href=""><img src="images/menu2.png" alt=""><p>图片分享</p></a></li>
             <li><a href=""><img src="images/menu3.png" alt=""><p>商品购买</p></a></li>
             <li><a href=""><img src="images/menu4.png" alt=""><p>留言反馈</p></a></li>
@@ -27,8 +27,7 @@
         },
         methods: {
             getSwipes () {
-                this.$http.get('static/banner.json').then( result => {
-                    console.log(result.body)
+                this.$http.get('home/banner').then( result => {
                     if ( result.body.status === 0) {
                         this.bannerPics = result.body.message
                     }
@@ -44,9 +43,9 @@
         margin: 0;
     }
     .home-container {
-        height: 250px;
 
         .mint-swipe {
+            height: 250px;
             .mint-swipe-items-wrap {
                 .mint-swipe-item {
                     img {
